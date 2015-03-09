@@ -2,7 +2,7 @@
 
 global $config;
 
-$config['server_local']         = array('www.findmydentist.local'); //local server host name
+$config['server_local']         = array('http://www.grocery-crud.local'); //local server host name
 $config['server_staging']       = array(''); // staging server host name
 $config['server_production']    = array('www.findmydentist.com/blog-poster',
                                         "www.findmydentist.com",

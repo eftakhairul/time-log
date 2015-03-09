@@ -47,7 +47,7 @@
                     <h1><a href="http://www.findmydentist.com/user">Blog Poster</a></h1>
                     <ul id="nav">
                         <li ><a href=<?php echo site_url('user') ?>>Wordpress Setting</a></li>
-                        
+
                         <li><a href=<?php echo site_url('post') ?>>Create Wordpress Blog Post</a>
                         </li>
                     </ul>

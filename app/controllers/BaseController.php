@@ -1,4 +1,4 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
  * Base Controller
@@ -14,7 +14,7 @@ include_once APPPATH . "libraries/DateHelper.php";
 include_once APPPATH . "libraries/DbHelper.php";
 include_once APPPATH . "libraries/RefactorHelper.php";
 
-abstract class BaseController extends Controller
+abstract class BaseController extends CI_Controller
 {
     protected $data = array();
 
@@ -34,8 +34,8 @@ abstract class BaseController extends Controller
 
     protected function _populateFlashData()
     {
-        $notify['message'] = $this->session->flashdata('message');
-        $notify['messageType'] = $this->session->flashdata('messageType');
+        $notify['message']      = $this->session->flashdata('message');
+        $notify['messageType']  = $this->session->flashdata('messageType');
 
         $this->data['notification'] = $notify;
     }

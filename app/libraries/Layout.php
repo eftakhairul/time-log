@@ -2,13 +2,15 @@
 
 class Layout
 {
-    var $registry;
-    var $layout;
+    public $registry;
+    public $layout;
+    private $CI;
 
-    function Layout($layout = "layouts/main")
+
+    function __construct($layout = "layouts/main")
     {
-        $this->obj =& get_instance();
-        $this->layout = $layout;
+        $this->CI =& get_instance();
+        $this->layout   = $layout;
     }
 
     function setLayout($layout)
@@ -18,16 +20,13 @@ class Layout
 
     function view($view, $data=null, $return=false)
     {
-        $data['content_for_layout'] = $this->obj->load->view($view,$data,true);
+        $data['content_for_layout'] = $this->CI->load->view($view, $data, true);
 
-        if($return)
-        {
-            $output = $this->obj->load->view($this->layout,$data, true);
-            return $output;
-        }
-        else
-        {
-            $this->obj->load->view($this->layout,$data, false);
+
+        if($return){
+            return $this->CI->load->view($this->layout, $data, true);
+        } else {
+            $this->CI->load->view($this->layout, $data, false);
         }
     }
 }
