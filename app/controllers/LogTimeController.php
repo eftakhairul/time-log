@@ -17,7 +17,7 @@ class LogTimeController extends BaseController {
 	public function index()
 	{
 
-		$this->layout->view('log');
+		$this->layout->view('logtime/index');
 	}
 
 
