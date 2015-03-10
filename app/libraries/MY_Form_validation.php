@@ -4,7 +4,7 @@ class MY_Form_validation extends CI_Form_validation
 {
     public function  __construct ()
     {
-        parent::CI_Form_validation();
+        parent::__construct();
         $this->set_error_delimiters('','');
     }
 
