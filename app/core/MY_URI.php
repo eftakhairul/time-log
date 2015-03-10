@@ -1,7 +1,7 @@
 <?php
 
 /*
- * MY_URI
+ * MY_URI Library
  *
  * Extended the core CI_URI class in order to add two extra methods
  * 

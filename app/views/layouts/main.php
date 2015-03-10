@@ -4,14 +4,7 @@
     <head>
 
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-        <?php if(!empty($refreshFlag)): ?>
-            <meta http-equiv="refresh" content="60">
-        <?php endif; ?>
-
-
-
-        <title>Blog Poster</title>
+        <title>Grossery CRUD</title>
 
         <style type="text/css" media="all">
             @import url("<?php echo site_url('assets/css/style.css'); ?>");
@@ -21,19 +14,7 @@
             @import url("<?php echo site_url('assets/css/date_input.css'); ?>");
         </style>
 
-        <link rel="stylesheet" href="<?php echo site_url('assets/css/print.css'); ?>" media="print" />
-
         <script type="text/javascript" src="<?php echo site_url('assets/js/jquery.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo site_url('assets/js/jquery.img.preload.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo site_url('assets/js/jquery.filestyle.mini.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo site_url('assets/js/jquery.wysiwyg.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo site_url('assets/js/jquery.date_input.pack.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo site_url('assets/js/facebox.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo site_url('assets/js/excanvas.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo site_url('assets/js/jquery.visualize.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo site_url('assets/js/jquery.select_skin.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo site_url('assets/js/jquery.pngfix.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo site_url('assets/js/custom.js') ?>"></script>
     </head>
 
     <body>
@@ -78,4 +59,10 @@
         </div>		<!-- #hld ends -->
 
     </body>
+
+   <script type="text/javascript" src="<?php echo site_url('assets/js/jquery.img.preload.js') ?>"></script>
+   <script type="text/javascript" src="<?php echo site_url('assets/js/jquery.filestyle.mini.js') ?>"></script>
+   <script type="text/javascript" src="<?php echo site_url('assets/js/jquery.wysiwyg.js') ?>"></script>
+   <script type="text/javascript" src="<?php echo site_url('assets/js/jquery.date_input.pack.js') ?>"></script>
+   <script type="text/javascript" src="<?php echo site_url('assets/js/custom.js') ?>"></script>
 </html>

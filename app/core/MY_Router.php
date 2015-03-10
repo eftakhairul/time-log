@@ -55,10 +55,6 @@ class MY_Router extends CI_Router
         // OK, revert to the original segment
         $segments[0] = $orgSegments[0];
 
-        echo "<pre>";
-        print_r($segments);
-        echo "</pre>";
-
 
         // Is the controller in a sub-folder?
         if (is_dir(APPPATH.'controllers/'.$segments[0]))

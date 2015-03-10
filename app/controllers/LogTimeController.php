@@ -3,6 +3,11 @@
 include_once APPPATH . "controllers/BaseController.php";
 class LogTimeController extends BaseController {
 
+	public function __construct()
+    {
+        $this->load->model("logtimes");
+    }
+
 	/**
 	 * Listing all logged Time
 	 *
@@ -12,7 +17,7 @@ class LogTimeController extends BaseController {
 	public function index()
 	{
 
-		$this->layout->view('welcome_message');
+		$this->layout->view('log');
 	}
 
 
@@ -24,7 +29,23 @@ class LogTimeController extends BaseController {
 	 */
 	public function filter()
 	{
-
 		$this->layout->view('welcome_message');
+	}
+
+
+	public function processPegination()
+	{
+		$this->load->library('pagination');
+        $options['page'] = empty ($options['page']) ? 0 : $options['page'];
+
+        $this->data["logtimes"] = $this->logtimes->getAll($options);
+
+        $paginationOptions = array(
+            'baseUrl' 		=> $options['url'] . '/page/',
+            'segmentValue' 	=> $this->uri->getSegmentIndex('page') + 1,
+            'numRows' 		=> $this->logtimes->findCount()
+        );
+
+        $this->pagination->setOptions($paginationOptions);
 	}
 }

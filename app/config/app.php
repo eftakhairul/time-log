@@ -7,4 +7,7 @@ $config['adminEmail']   = 'eftakhairul@gmail.com'; //Admin Email Address
 $config['infoEmail']    = ''; // Info Email Address
 $config['infoName']     = ''; // Info Name
 
+//Pegination
+$config['rowsPerPage'] = 25;
+
 
