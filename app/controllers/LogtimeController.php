@@ -1,11 +1,13 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 include_once APPPATH . "controllers/BaseController.php";
-class LogTimeController extends BaseController {
+class LogtimeController extends BaseController {
 
 	public function __construct()
     {
-        $this->load->model("logtimes");
+		parent::__construct();
+        $this->load->model('logtimes');
+		$this->load->library('pagination');
     }
 
 	/**
@@ -27,6 +29,19 @@ class LogTimeController extends BaseController {
 	 *
 	 * return string
 	 */
+	public function createLogtime()
+	{
+
+		$this->layout->view('logtime/index');
+	}
+
+
+	/**
+	 * Listing all logged Time
+	 *
+	 *
+	 * return string
+	 */
 	public function filter()
 	{
 		$this->layout->view('welcome_message');
@@ -35,7 +50,7 @@ class LogTimeController extends BaseController {
 
 	public function processPegination()
 	{
-		$this->load->library('pagination');
+
         $options['page'] = empty ($options['page']) ? 0 : $options['page'];
 
         $this->data["logtimes"] = $this->logtimes->getAll($options);

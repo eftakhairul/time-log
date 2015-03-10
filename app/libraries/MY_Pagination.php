@@ -4,9 +4,9 @@ class MY_Pagination extends CI_Pagination
 {
     protected $values = array();
 
-    public function MY_Pagination()
+    public function __construct()
     {
-        parent::CI_Pagination();
+        parent::__construct();
         $CI = get_instance();
         
         $this->values['per_page'] = $CI->config->item('rowsPerPage');

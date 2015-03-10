@@ -1,7 +1,7 @@
 <?php
 /**
  * Migration File
- * 
+ *
  * Add new field to user table
  *
  * @author Eftakhairul Islam <eftakhairul@gmail.com>

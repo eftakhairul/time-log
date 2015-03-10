@@ -4,7 +4,7 @@
     <head>
 
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Grossery CRUD</title>
+        <title>Log Time</title>
 
         <style type="text/css" media="all">
             @import url("<?php echo site_url('assets/css/style.css'); ?>");
@@ -24,15 +24,20 @@
             <div class="wrapper">		<!-- wrapper begins -->
 
                 <div id="header">
+                    <h1><a href="/logtime">Log Time</a></h1>
 
-                    <h1><a href="http://www.findmydentist.com/user">Blog Poster</a></h1>
+
+                    <!--                    navigation-->
                     <ul id="nav">
-                        <li ><a href=<?php echo site_url('user') ?>>Wordpress Setting</a></li>
-
-                        <li><a href=<?php echo site_url('post') ?>>Create Wordpress Blog Post</a>
-                        </li>
+                        <li ><a href=<?php echo site_url('schedule') ?>>Schedules</a></li>
                     </ul>
+                    <!--      navigation end-->
+                    
 
+                    <p class="user">
+                        Hello, <a href="<?php echo site_url('user/editUser/id').'/'.$this->session->userdata('user_id')?>"><?php echo $this->session->userdata('username') ?></a> |
+                        <a href="<?php echo site_url('user/logout') ?>">Logout</a>
+                    </p>
                 </div>		<!-- #header ends -->
 
                 <?php if (!empty($notification['message'])) : ?>
