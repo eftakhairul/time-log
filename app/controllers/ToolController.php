@@ -1,12 +1,12 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 include_once APPPATH . "controllers/BaseController.php";
-class SetupController extends BaseController {
+class ToolController extends BaseController {
 
 	/**
 	 * Run Migrations files
 	 */
-	public function index()
+	public function migrate()
 	{
 		$this->load->library('migration');
 

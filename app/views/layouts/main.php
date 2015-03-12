@@ -32,7 +32,7 @@
                         <li ><a href=<?php echo site_url('schedule') ?>>Schedules</a></li>
                     </ul>
                     <!--      navigation end-->
-                    
+
 
                     <p class="user">
                         Hello, <a href="<?php echo site_url('user/editUser/id').'/'.$this->session->userdata('user_id')?>"><?php echo $this->session->userdata('username') ?></a> |

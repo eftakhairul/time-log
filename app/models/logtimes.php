@@ -31,10 +31,16 @@ class Logtimes extends MY_Model
                    teams.title as team_title";
 
         $this->db->select($fields);
+        $this->dn->from($this->table);
+        $this->db->join('projects', "projects.id = {$this->table}.projects_id");
+        $this->db->join('teams', "teams.id = {$this->table}.team_id");
         $this->_setQueryParts($options);
 
-        $this->db->orderby("{$this->table}.date ASC");
-        $this->db->limit($this->config->item('rowsPerPage'), $options['page']);
+        $this->db->order_by("{$this->table}.date ASC");
+
+        if(!empty($options['page'])) {
+            $this->db->limit($this->config->item('rowsPerPage'), $options['page']);
+        }
 
         return $this->db->get()->result_array();
     }
@@ -51,16 +57,23 @@ class Logtimes extends MY_Model
                    {$this->table}.note,
                    {$this->table}.date,
                    {$this->table}.hours,
-                   {$this->table}.mins,
+                   {$this->table}.mins
                    projects.title as project_title,
                    teams.title as team_title";
 
         $this->db->select($fields);
+        $this->dn->from($this->table);
+        $this->db->join('projects', "projects.id = {$this->table}.project_id");
+        $this->db->join('teams', "teams.id = {$this->table}.team_id");
         $this->db->where("YEARWEEK(`date`, 1) = YEARWEEK(CURDATE(), 1)");
         $this->_setQueryParts($options);
 
-        $this->db->orderby("{$this->table}.date ASC");
-        $this->db->limit($this->config->item('rowsPerPage'), $options['page']);
+        $this->db->order_by("{$this->table}.date ASC");
+
+
+        if(!empty($options['page'])) {
+            $this->db->limit($this->config->item('rowsPerPage'), $options['page']);
+        }
 
         return $this->db->get()->result_array();
     }

@@ -35,7 +35,7 @@ class MY_Model extends CI_Model
         }
 
         if ($order != null) {
-            $this->db->orderby($order);
+            $this->db->order_by($order);
         }
 
         if ($limit != null)  {

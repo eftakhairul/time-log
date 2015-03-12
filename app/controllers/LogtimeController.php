@@ -48,7 +48,16 @@ class LogtimeController extends BaseController {
 	}
 
 
-	public function processPegination()
+
+	public function user()
+	{
+		$userId = $this->_ensureLoggedIn();
+		$this->logtimes->getWeeklyData($userId);
+		$this->layout->view('logtime/index');
+	}
+
+
+	private function processPegination()
 	{
 
         $options['page'] = empty ($options['page']) ? 0 : $options['page'];
@@ -63,4 +72,6 @@ class LogtimeController extends BaseController {
 
         $this->pagination->setOptions($paginationOptions);
 	}
+
+
 }
