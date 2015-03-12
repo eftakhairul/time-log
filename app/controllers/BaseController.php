@@ -42,9 +42,11 @@ abstract class BaseController extends CI_Controller
 
     protected function _ensureLoggedIn()
     {
-        /*if (!$this->session->userdata('username')) {
+        if (!$this->session->userdata('username')) {
             redirect('user');
-        }*/
+        }
+
+        return $this->session->userdata('user_id');
     }
 
     protected function _redirectForSuccess($redirectLink, $message)
