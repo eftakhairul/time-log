@@ -18,50 +18,19 @@
     </head>
 
     <body>
+        <?php if (!empty($notification['message'])) : ?>
 
-        <div id="hld">
+        <div class="block message-block">
 
-            <div class="wrapper">		<!-- wrapper begins -->
+            <div class="message <?php echo $notification['messageType'] ?>" style="display: block;">
+                <p><?php echo $notification['message'] ?></p>
+            </div>
 
-                <div id="header">
-                    <h1><a href="/logtime">Log Time</a></h1>
+        </div>
 
+        <?php endif ?>
 
-                    <!--                    navigation-->
-                    <ul id="nav">
-                        <li ><a href=<?php echo site_url('schedule') ?>>Schedules</a></li>
-                    </ul>
-                    <!--      navigation end-->
-
-
-                    <p class="user">
-                        Hello, <a href="<?php echo site_url('user/editUser/id').'/'.$this->session->userdata('user_id')?>"><?php echo $this->session->userdata('username') ?></a> |
-                        <a href="<?php echo site_url('user/logout') ?>">Logout</a>
-                    </p>
-                </div>		<!-- #header ends -->
-
-                <?php if (!empty($notification['message'])) : ?>
-
-                <div class="block message-block">
-
-                    <div class="message <?php echo $notification['messageType'] ?>" style="display: block;">
-                        <p><?php echo $notification['message'] ?></p>
-                    </div>
-
-                </div>
-
-                <?php endif ?>
-
-                <?php echo $content_for_layout ?>
-
-                <div id="footer">
-                    <p class="right">Developed by <a href="http://eftakhairul.com/">Eftakhairul Islam.</a></p>
-
-                </div>
-
-            </div>		<!-- wrapper ends -->
-
-        </div>		<!-- #hld ends -->
+        <?php echo $content_for_layout ?>
 
     </body>
 

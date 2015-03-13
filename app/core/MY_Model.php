@@ -9,7 +9,7 @@ class MY_Model extends CI_Model
     private $numRows = null;
     private $insertId = null;
     private $affectedRows = null;
-    private $returnArray = true;
+    private $returnArray = false;
     
     public function loadTable($table, $primaryKey = 'id')
     {

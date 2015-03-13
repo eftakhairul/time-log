@@ -31,9 +31,28 @@ class LogtimeController extends BaseController {
 	 */
 	public function createLogtime()
 	{
+        $this->layout->setLayout("layouts/ajax");
+        $this->load->library('form_validation');
+        $this->load->model("projects");
+        $this->load->model("teams");
+        $this->load->model("statuses");
+        $this->load->model("types");
+        $this->load->model("activities");
 
-		$this->layout->view('logtime/index');
+		$this->form_validation->setRulesForCreateEntry();
+
+
+        $this->data['projects'] = $this->projects->findAll();
+        $this->data['teams'] = $this->teams->findAll();
+        $this->data['statuses'] = $this->statuses->findAll();
+        $this->data['types'] = $this->types->findAll();
+        $this->data['activities'] = $this->activities->findAll();
+
+
+
+		$this->layout->view('logtime/create', $this->data);
 	}
+
 
 
 	/**

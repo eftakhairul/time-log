@@ -3,7 +3,7 @@
     <div class="block_head">
         <h2>Events</h2>
         <ul>
-            <li><a href='<?php echo site_url('schedule/export') ?>'>Export</a></li>
+            <li> <a href='#' id="add_entry"> Add Entry </a>   | <a href='<?php echo site_url('schedule/export') ?>'>Export</a></li>
         </ul>
 
     </div> <!--.block_head ends -->
@@ -61,3 +61,16 @@
     </div> <!--.block_content ends-->
 
 </div> <!--.block ends-->
+
+
+<script>
+
+      jQuery(function($) {
+
+          $("#add_entry").click(function(){
+              $.facebox({ajax: "<?php echo site_url('logtime/createLogtime') ?>" });
+          });
+
+        $('input.date_picker').date_input();
+    });
+</script>

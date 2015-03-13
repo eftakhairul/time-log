@@ -8,17 +8,37 @@ class MY_Form_validation extends CI_Form_validation
         $this->set_error_delimiters('','');
     }
 
-    public function setRulesForBlogPost()
+    public function setRulesForCreateEntry()
     {
         $config = array(
             array(
-                'field' => 'title',
-                'label' => 'the title',
+                'field' => 'project_id',
+                'label' => 'Porject name',
+                'rules' => 'required'
+            ),
+             array(
+                'field' => 'team_id',
+                'label' => 'Team',
                 'rules' => 'required'
             ),
             array(
-                'field' => 'description',
-                'label' => 'the description',
+                'field' => 'status_id',
+                'label' => 'Status',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'type_id',
+                'label' => 'Type',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'activity_id',
+                'label' => 'Activity',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'date',
+                'label' => 'Date',
                 'rules' => 'required'
             ),
         );
