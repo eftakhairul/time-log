@@ -23,17 +23,19 @@ class Logtimes extends MY_Model
     public function getAll($options = array())
     {
         $fields = "{$this->table}.{$this->primaryKey},
-                   {$this->table}.note,
+                   {$this->table}.notes,
                    {$this->table}.date,
                    {$this->table}.hours,
                    {$this->table}.mins,
+                   users.username as username,
                    projects.title as project_title,
                    teams.title as team_title";
 
         $this->db->select($fields);
-        $this->dn->from($this->table);
-        $this->db->join('projects', "projects.id = {$this->table}.projects_id");
+        $this->db->from($this->table);
+        $this->db->join('projects', "projects.id = {$this->table}.project_id");
         $this->db->join('teams', "teams.id = {$this->table}.team_id");
+          $this->db->join('users', "users.id = {$this->table}.user_id");
         $this->_setQueryParts($options);
 
         $this->db->order_by("{$this->table}.date ASC");
@@ -54,7 +56,7 @@ class Logtimes extends MY_Model
     public function getWeeklyData($options = array())
     {
         $fields = "{$this->table}.{$this->primaryKey},
-                   {$this->table}.note,
+                   {$this->table}.notes,
                    {$this->table}.date,
                    {$this->table}.hours,
                    {$this->table}.mins

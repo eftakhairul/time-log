@@ -77,7 +77,7 @@ class MY_Model extends CI_Model
         $data = $this->findAll($conditions, 'COUNT(*) AS count', null, 0, 1);
 
         if ($data) {
-            return $data[0]['count'];
+            return $data[0]->count;
         } else {
             return false;
         }

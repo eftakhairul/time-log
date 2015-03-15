@@ -34,17 +34,16 @@
             <?php else : foreach($logtimes AS $logtime) : ?>
                 
             <tr>
-                <td class="centered"><?php echo DateHelper::mysqlToHuman($logtime['project_name']) ?></td>
-                <td class="centered"><?php echo DateHelper::mysqlToHuman($logtime['team_name']) ?></td>
-                <td class="centered"><?php echo DateHelper::mysqlToHuman($logtime['username']) ?></td>
-                <td class="centered"><?php echo date('l', strtotime($schedule['date'])) ?></td>
-                <td class="centered"><?php echo date('l', strtotime($schedule['hours'])) ?></td>
-                <td class="centered"><?php echo date('l', strtotime($schedule['mins'])) ?></td>
+                <td class="centered"><?php echo $logtime['project_title'] ?></td>
+                <td class="centered"><?php echo $logtime['team_title'] ?></td>
+                <td class="centered"><?php echo $logtime['username'] ?></td>
+                <td class="centered"><?php echo date('l', strtotime($logtime['date'])) ?></td>
+                <td class="centered"><?php echo $logtime['hours'] ?></td>
+                <td class="centered"><?php echo $logtime['mins'] ?></td>
                 <td class="action">
-                    <a href="<?php echo site_url("schedule/edit/{$schedule['schedule_id']}") ?>">Edit</a>
-                    <?php if (!empty ($flagForPrint)): ?>
-                    | <a href="<?php echo site_url("schedule/deleteEvent/id/{$schedule['schedule_id']}") ?>" id='delete'>Delete</a>
-                    <?php endif ?>
+                    <a href="<?php echo site_url("logtime/edit/{$logtime['id']}") ?>">Edit</a>
+                    | <a href="<?php echo site_url("logtime/delete/id/{$logtime['id']}") ?>" id='delete'>Delete</a>
+
                 </td>
             </tr>
 
@@ -71,6 +70,31 @@
               $.facebox({ajax: "<?php echo site_url('logtime/createLogtime') ?>" });
           });
 
-        $('input.date_picker').date_input();
+           $('#submit_entry').live('click', function(){
+
+            $.ajax({
+                url: $("#create_entry_form").attr('action'),
+                type: 'POST',
+                data: $('#create_entry_form').serialize(),
+                success: function(content) {
+
+                    if (content == 1) {
+                        jQuery.facebox.close();
+                    } else {
+                        jQuery.facebox(content);
+                        return false;
+                    }
+                }
+            });
+
+            return false;
+        });
+
+        $('#cancel').live('click', function(){
+            jQuery.facebox.close();
+            return false;
+        });
+
+
     });
 </script>

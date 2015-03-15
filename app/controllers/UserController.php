@@ -22,9 +22,9 @@ class UserController extends BaseController
 				$result = $this->users->validateUser($_POST);
 				if ($result) {
 
-					$this->session->set_userdata('username', $result['username']);
-					$this->session->set_userdata('user_id', $result['id']);
-					$this->session->set_userdata('type_id', $result['type']);
+					$this->session->set_userdata('username', $result->username);
+					$this->session->set_userdata('user_id', $result->id);
+					$this->session->set_userdata('type_id', $result->type);
 
 					$this->_redirectForSuccess('logtime', 'You have successfully logged in.');
 

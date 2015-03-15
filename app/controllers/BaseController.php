@@ -34,8 +34,8 @@ abstract class BaseController extends CI_Controller
 
     protected function _populateFlashData()
     {
-        $notify['message']      = $this->session->flashdata('message');
-        $notify['messageType']  = $this->session->flashdata('messageType');
+        $notify['message']          = $this->session->flashdata('message');
+        $notify['messageType']      = $this->session->flashdata('messageType');
 
         $this->data['notification'] = $notify;
     }

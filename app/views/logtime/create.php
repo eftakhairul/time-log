@@ -8,7 +8,7 @@
 
     <div class="block_content">
 
-        <form action="<?php echo site_url('staff/addStaff') ?>" method="POST">
+        <form id = "create_entry_form" action="<?php echo site_url('logtime/createLogtime') ?>" method="POST">
 
             <p>
                 <label for="project_id">
@@ -164,7 +164,7 @@
             </p>
 
             <p>
-                <input type="submit" value="Save" class="submit small" />
+                <input type="submit" value="Save" class="submit small" id="submit_entry" />
                 <input type="button" value ="Exit" class="submit small" onClick = "window.location = '<?php echo site_url('logtime')?>'" />
             </p>
 
