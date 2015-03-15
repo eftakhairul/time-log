@@ -35,7 +35,7 @@ class Logtimes extends MY_Model
         $this->db->from($this->table);
         $this->db->join('projects', "projects.id = {$this->table}.project_id");
         $this->db->join('teams', "teams.id = {$this->table}.team_id");
-          $this->db->join('users', "users.id = {$this->table}.user_id");
+        $this->db->join('users', "users.id = {$this->table}.user_id");
         $this->_setQueryParts($options);
 
         $this->db->order_by("{$this->table}.date ASC");
@@ -78,5 +78,15 @@ class Logtimes extends MY_Model
         }
 
         return $this->db->get()->result_array();
+    }
+
+
+    public function findById($id)
+    {
+        $this->db->select("{$this->table}.*");
+        $this->db->where(array('id' => $id));
+        $query = $this->db->get($this->table);
+
+        return $query->row() ;
     }
 }

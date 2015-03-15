@@ -29,7 +29,8 @@
 
                     <!--                    navigation-->
                     <ul id="nav">
-                        <li ><a href=<?php echo site_url('schedule') ?>>Schedules</a></li>
+                        <li ><a href=<?php echo site_url('logtime/user') ?>>Home</a></li>
+                        <li ><a href=<?php echo site_url('logtime') ?>>Logtime</a></li>
                     </ul>
                     <!--      navigation end-->
 

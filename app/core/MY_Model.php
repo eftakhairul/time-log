@@ -10,6 +10,11 @@ class MY_Model extends CI_Model
     private $insertId = null;
     private $affectedRows = null;
     private $returnArray = false;
+
+    public function __construct()
+    {
+        parent::__construct();
+    }
     
     public function loadTable($table, $primaryKey = 'id')
     {
@@ -18,7 +23,7 @@ class MY_Model extends CI_Model
         $this->primaryKey = $primaryKey;
     }
 
-    public function findAll($conditions = null, $fields = '*', $order = null, $start = 0, $limit = null)
+    public function findAll($conditions = null, $fields = "*", $order = null, $start = 0, $limit = null)
     {
         if ($conditions != null) {
             $conditions = $this->_removeNonAttributeFields($conditions);
@@ -188,6 +193,11 @@ class MY_Model extends CI_Model
     public function setPrimaryKey($primaryKey)
     {
         $this->primaryKey = $primaryKey;
+    }
+
+    public function setTable($table)
+    {
+        $this->table = $table;
     }
 
     public function setReturnArray($returnArray)
