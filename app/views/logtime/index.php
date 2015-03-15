@@ -20,11 +20,9 @@
                     <th class="centered" width="12%">Mins</th>
                     <th class="centered" width="20%">Action</th>
                 </tr>
-
             </thead>
             
             <tbody>
-
             <?php if (empty ($logtimes)) : ?>
                 
             <tr>
@@ -46,7 +44,6 @@
 
                 </td>
             </tr>
-
             <?php endforeach; endif ?>
                 
             </tbody>
