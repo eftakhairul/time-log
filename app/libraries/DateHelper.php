@@ -11,7 +11,7 @@ class DateHelper
     public static function mysqlToHuman ($date)
     {
         $date = strtotime($date);
-        return date('%d %M %Y', $date);
+        return date('d M Y', $date);
     }
 
     public static function humanToMysql ($date)

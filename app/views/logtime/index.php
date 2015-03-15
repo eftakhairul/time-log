@@ -37,7 +37,7 @@
                 <td class="centered"><?php echo $logtime['project_title'] ?></td>
                 <td class="centered"><?php echo $logtime['team_title'] ?></td>
                 <td class="centered"><?php echo $logtime['username'] ?></td>
-                <td class="centered"><?php echo date('l', strtotime($logtime['date'])) ?></td>
+                <td class="centered"><?php echo DateHelper::mysqlToHuman($logtime['date']) ?></td>
                 <td class="centered"><?php echo $logtime['hours'] ?></td>
                 <td class="centered"><?php echo $logtime['mins'] ?></td>
                 <td class="action">
