@@ -56,7 +56,7 @@
                 <?php echo $content_for_layout ?>
 
                 <div id="footer">
-                    <p class="right">Developed by <a href="http://eftakhairul.com/">Eftakhairul Islam.</a></p>
+                    <p class="right">Developed by <a href="http://eftakhairul.com/">Eftakhairul Islam</a></p>
 
                 </div>
 
@@ -65,7 +65,6 @@
         </div>		<!-- #hld ends -->
 
     </body>
-
         <script type="text/javascript" src="<?php echo site_url('assets/js/jquery.img.preload.js') ?>"></script>
         <script type="text/javascript" src="<?php echo site_url('assets/js/jquery.filestyle.mini.js') ?>"></script>
         <script type="text/javascript" src="<?php echo site_url('assets/js/jquery.wysiwyg.js') ?>"></script>

@@ -3,12 +3,66 @@
     <div class="block_head">
         <h2>Events</h2>
         <ul>
-            <li> <a href='#' id="add_entry"> Add Entry </a>   | <a href='<?php echo site_url('schedule/export') ?>'>Export</a></li>
+            <li> <a href='#' id="add_entry"> Add Entry </a>   | <a href='<?php echo site_url('schedule/export') ?>'>Export Excel</a></li>
         </ul>
 
     </div> <!--.block_head ends -->
     
     <div class="block_content">
+
+        <div>
+            <form action="<?php echo site_url('logtime/filter') ?>" method="POST">
+
+                <div style="display: inline-block">
+
+                <select id="project_id" name="project_id"  class="styled" style="width: 180px">
+                    <option value=''>- Project-</option>
+
+                    <?php foreach ($projects as $project) : ?>
+                        <option value="<?php echo $project->id ?>">
+                            <?php echo $project->title ?>
+                        </option>
+                    <?php endforeach ?>
+
+                </select>
+                </div>
+
+                <div style="display: inline-block">
+
+                  <select id="team_id" name="team_id"  class="styled"  style="width: 180px">
+                    <option value=''>- Team-</option>
+
+                    <?php foreach ($teams as $team) : ?>
+                        <option value="<?php echo $team->id ?>">
+                            <?php echo $team->title ?></option>
+                    <?php endforeach ?>
+
+                    </select>
+                </div>
+
+                <div style="display: inline-block">
+
+                  <select id="type_id" name="type_id" class="styled" style="width: 180px">
+                    <option value=''>- Type -</option>
+
+                    <?php foreach ($types as $type) : ?>
+                        <option value="<?php echo $type->id ?>">
+                            <?php echo $type->title ?></option>
+                    <?php endforeach ?>
+
+                    </select>
+                </div>
+
+
+
+                <div style="display: inline-block">
+                    <input type="submit" value="Filter" class="submit small" id="submit_entry" />|
+                    <input type="button" value ="Clear Filter" class="submit mid" onClick = "window.location = '<?php echo site_url('logtime')?>'" />
+                </div>
+
+            </form>
+        </div>
+
         <table cellpadding="0" cellspacing="0" width="100%">
             <thead>
                 <tr>
