@@ -19,8 +19,15 @@ class LogtimeController extends BaseController {
 	 */
 	public function index()
 	{
-        $this->processPegination();
+        $this->load->model("projects");
+        $this->load->model("teams");
+        $this->load->model("types");
 
+        $this->data['projects']     = $this->projects->findAll();
+        $this->data['teams']        = $this->teams->findAll();
+        $this->data['types']        = $this->types->findAll();
+
+        $this->processPegination();
 		$this->layout->view('logtime/index', $this->data);
 	}
 
