@@ -21,11 +21,15 @@ class LogtimeController extends BaseController {
 	{
         $this->load->model("projects");
         $this->load->model("teams");
+        $this->load->model("statuses");
         $this->load->model("types");
+        $this->load->model("activities");
 
         $this->data['projects']     = $this->projects->findAll();
         $this->data['teams']        = $this->teams->findAll();
+        $this->data['statuses']     = $this->statuses->findAll();
         $this->data['types']        = $this->types->findAll();
+        $this->data['activities']   = $this->activities->findAll();
 
         $this->processPegination();
 		$this->layout->view('logtime/index', $this->data);
@@ -133,6 +137,17 @@ class LogtimeController extends BaseController {
 	 * return string
 	 */
 	public function filter()
+	{
+		$this->layout->view('welcome_message');
+	}
+
+    /**
+	 * Listing all logged Time
+	 *
+	 *
+	 * return string
+	 */
+	public function export()
 	{
 		$this->layout->view('welcome_message');
 	}

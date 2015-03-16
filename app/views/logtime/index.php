@@ -1,9 +1,9 @@
 <div class="block">
 
     <div class="block_head">
-        <h2>Events</h2>
+        <h2>Entries</h2>
         <ul>
-            <li> <a href='#' id="add_entry"> Add Entry </a>   | <a href='<?php echo site_url('schedule/export') ?>'>Export Excel</a></li>
+            <li> <a href='#' id="add_entry">Add New Entry</a>   | <a href='<?php echo site_url('logtime/export') ?>'>Export Excel</a></li>
         </ul>
 
     </div> <!--.block_head ends -->
@@ -15,7 +15,7 @@
 
                 <div style="display: inline-block">
 
-                <select id="project_id" name="project_id"  class="styled" style="width: 180px">
+                <select  name="project_id"   style="width: 100px">
                     <option value=''>- Project-</option>
 
                     <?php foreach ($projects as $project) : ?>
@@ -29,7 +29,7 @@
 
                 <div style="display: inline-block">
 
-                  <select id="team_id" name="team_id"  class="styled"  style="width: 180px">
+                  <select  name="team_id"   style="width: 100px">
                     <option value=''>- Team-</option>
 
                     <?php foreach ($teams as $team) : ?>
@@ -42,13 +42,35 @@
 
                 <div style="display: inline-block">
 
-                  <select id="type_id" name="type_id" class="styled" style="width: 180px">
+                  <select  name="type_id" style="width: 100px">
                     <option value=''>- Type -</option>
 
                     <?php foreach ($types as $type) : ?>
                         <option value="<?php echo $type->id ?>">
                             <?php echo $type->title ?></option>
                     <?php endforeach ?>
+
+                    </select>
+                </div>
+
+                <div style="display: inline-block">
+                     <select name="activity_id" style="width: 100px">
+                     <option value=''>- Activity -</option>
+
+                     <?php foreach ($activities as $activity) : ?>
+                        <option value="<?php echo $activity->id ?>">
+                            <?php echo $activity->title ?></option>
+                     <?php endforeach ?>
+                    </select>
+                </div>
+                <div style="display: inline-block">
+                    <select name="status_id" style="width: 100px">
+                        <option value=''>- Status -</option>
+
+                        <?php foreach ($statuses as $status) : ?>
+                            <option value="<?php echo $team->id ?>">
+                                <?php echo $status->title ?></option>
+                        <?php endforeach ?>
 
                     </select>
                 </div>
