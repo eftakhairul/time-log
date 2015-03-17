@@ -121,7 +121,7 @@
             </thead>
             
             <tbody>
-            <?php if (empty ($logtimes)) : ?>
+            <?php $total_hours = $total_mins = 0; if (empty ($logtimes)) : ?>
                 
             <tr>
                 <td colspan="7" class="nodatamsg">No entry is available.</td>
@@ -134,15 +134,28 @@
                 <td class="centered"><?php echo $logtime->team_title ?></td>
                 <td class="centered"><?php echo $logtime->username ?></td>
                 <td class="centered"><?php echo DateHelper::mysqlToHuman($logtime->date) ?></td>
-                <td class="centered"><?php echo $logtime->hours ?></td>
-                <td class="centered"><?php echo $logtime->mins ?></td>
+                <td class="centered"><?php $total_hours += $logtime->hours; echo $logtime->hours ?></td>
+                <td class="centered"><?php $total_mins += $logtime->mins; echo $logtime->mins ?></td>
                 <td class="action">
                     <a href="<?php echo site_url("logtime/edit/{$logtime->id}") ?>">Edit</a>
                     | <a href="<?php echo site_url("logtime/delete/id/{$logtime->id}") ?>" id='delete'>Delete</a>
 
                 </td>
             </tr>
-            <?php endforeach; endif ?>
+            <?php endforeach; endif;
+                $total_mins += ($total_hours * 60);
+                $total_mins  = $total_mins /60;
+                $total_hours = floor($total_mins);
+                $total_mins  = $total_mins - $total_hours;
+            ?>
+
+
+             <tr>
+                <td class="centered" colspan="3"></td>
+                <td class="centered" ><p style="font-weight: bold;">Total</p></td>
+                <td class="centered"><?php echo $total_hours ?></td>
+                <td class="centered"><?php echo $total_mins ?></td>
+                <td class="action"></tr>
                 
             </tbody>
             
