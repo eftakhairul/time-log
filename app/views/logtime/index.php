@@ -1,7 +1,7 @@
 <div class="block">
 
     <div class="block_head">
-        <h2>Entries</h2>
+        <h2><?php echo $title ?></h2>
         <ul>
             <li> <a href='#' id="add_entry">Add New Entry</a>   | <a href='<?php echo site_url('logtime/export') ?>'>Export Excel</a></li>
         </ul>
@@ -15,25 +15,26 @@
 
                 <div style="display: inline-block">
 
-                <select  name="project_id"   style="width: 100px">
-                    <option value=''>- Project-</option>
+                <select  name="project_id"   style="width: 85px">
+                    <option value=''>Project</option>
 
                     <?php foreach ($projects as $project) : ?>
-                        <option value="<?php echo $project->id ?>">
+                        <option value="<?php echo $project->id ?>"
+                            <?php echo (!empty($filter['project_id']) && $filter['project_id'] == $project->id)? "selected='selected'":"" ?>>
                             <?php echo $project->title ?>
                         </option>
                     <?php endforeach ?>
-
                 </select>
                 </div>
 
                 <div style="display: inline-block">
 
-                  <select  name="team_id"   style="width: 100px">
-                    <option value=''>- Team-</option>
+                  <select  name="team_id"   style="width: 85px">
+                    <option value=''>Team</option>
 
                     <?php foreach ($teams as $team) : ?>
-                        <option value="<?php echo $team->id ?>">
+                        <option value="<?php echo $team->id ?>"
+                        <?php echo (!empty($filter['team_id']) && $filter['team_id'] == $team->id)? "selected='selected'":"" ?>>
                             <?php echo $team->title ?></option>
                     <?php endforeach ?>
 
@@ -42,11 +43,12 @@
 
                 <div style="display: inline-block">
 
-                  <select  name="type_id" style="width: 100px">
-                    <option value=''>- Type -</option>
+                  <select  name="type_id" style="width: 80px">
+                    <option value=''>Type </option>
 
                     <?php foreach ($types as $type) : ?>
-                        <option value="<?php echo $type->id ?>">
+                        <option value="<?php echo $type->id ?>"
+                        <?php echo (!empty($filter['type_id']) && $filter['type_id'] == $type->id)? "selected='selected'":"" ?>>
                             <?php echo $type->title ?></option>
                     <?php endforeach ?>
 
@@ -54,32 +56,50 @@
                 </div>
 
                 <div style="display: inline-block">
-                     <select name="activity_id" style="width: 100px">
-                     <option value=''>- Activity -</option>
+                     <select name="activity_id" style="width: 95px">
+                     <option value=''>Activity</option>
 
                      <?php foreach ($activities as $activity) : ?>
-                        <option value="<?php echo $activity->id ?>">
+                        <option value="<?php echo $activity->id ?>"
+                        <?php echo (!empty($filter['activity_id']) && $filter['activity_id'] ==  $activity->id)? "selected='selected'":"" ?>>
                             <?php echo $activity->title ?></option>
                      <?php endforeach ?>
                     </select>
                 </div>
                 <div style="display: inline-block">
-                    <select name="status_id" style="width: 100px">
-                        <option value=''>- Status -</option>
+                    <select name="status_id" style="width: 85px">
+                        <option value=''>Status</option>
 
                         <?php foreach ($statuses as $status) : ?>
-                            <option value="<?php echo $team->id ?>">
+                            <option value="<?php echo $status->id ?>"
+                            <?php echo (!empty($filter['status_id']) && $filter['status_id'] ==  $status->id)? "selected='selected'":"" ?>>
                                 <?php echo $status->title ?></option>
                         <?php endforeach ?>
 
                     </select>
                 </div>
 
+                <div style="display: inline-block">
+                    <select name="user_id" style="width: 80px">
+                        <option value=''>User</option>
+
+                        <?php foreach ($users as $user) : ?>
+                            <option value="<?php echo $user->id ?>"
+                            <?php echo (!empty($filter['user_id']) && $filter['user_id'] ==  $user->id )? "selected='selected'":"" ?>>
+                                <?php echo $user->username ?></option>
+                        <?php endforeach ?>
+
+                    </select>
+                </div>
+
+                <div style="display: inline-block">
+                    <input id="date" type="text" name="date" class="text date_picker" value= " <?php echo (!empty($filter['date']))? $filter['date']:"" ?>"  style="Width: 90px" /><
+                </div>
 
 
                 <div style="display: inline-block">
-                    <input type="submit" value="Filter" class="submit small" id="submit_entry" />|
-                    <input type="button" value ="Clear Filter" class="submit mid" onClick = "window.location = '<?php echo site_url('logtime')?>'" />
+                    <input type="submit" value="Filter" class="submit small" />|
+                    <input type="button" value ="Clear" class="submit small" onClick = "window.location = '<?php echo site_url('logtime/clearFilter')?>'" />
                 </div>
 
             </form>
@@ -108,15 +128,15 @@
             <?php else : foreach($logtimes AS $logtime) : ?>
                 
             <tr>
-                <td class="centered"><?php echo $logtime['project_title'] ?></td>
-                <td class="centered"><?php echo $logtime['team_title'] ?></td>
-                <td class="centered"><?php echo $logtime['username'] ?></td>
-                <td class="centered"><?php echo DateHelper::mysqlToHuman($logtime['date']) ?></td>
-                <td class="centered"><?php echo $logtime['hours'] ?></td>
-                <td class="centered"><?php echo $logtime['mins'] ?></td>
+                <td class="centered"><?php echo $logtime->project_title ?></td>
+                <td class="centered"><?php echo $logtime->team_title ?></td>
+                <td class="centered"><?php echo $logtime->username ?></td>
+                <td class="centered"><?php echo DateHelper::mysqlToHuman($logtime->date) ?></td>
+                <td class="centered"><?php echo $logtime->hours ?></td>
+                <td class="centered"><?php echo $logtime->mins ?></td>
                 <td class="action">
-                    <a href="<?php echo site_url("logtime/edit/{$logtime['id']}") ?>">Edit</a>
-                    | <a href="<?php echo site_url("logtime/delete/id/{$logtime['id']}") ?>" id='delete'>Delete</a>
+                    <a href="<?php echo site_url("logtime/edit/{$logtime->id}") ?>">Edit</a>
+                    | <a href="<?php echo site_url("logtime/delete/id/{$logtime->id}") ?>" id='delete'>Delete</a>
 
                 </td>
             </tr>

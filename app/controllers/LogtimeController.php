@@ -9,6 +9,22 @@ class LogtimeController extends BaseController {
 
         $this->load->model('logtimes');
 		$this->load->library('pagination');
+
+        $this->load->model("projects");
+        $this->load->model("teams");
+        $this->load->model("statuses");
+        $this->load->model("types");
+        $this->load->model("activities");
+        $this->load->model("users");
+
+        $this->data['projects']     = $this->projects->findAll();
+        $this->data['teams']        = $this->teams->findAll();
+        $this->data['statuses']     = $this->statuses->findAll();
+        $this->data['types']        = $this->types->findAll();
+        $this->data['activities']   = $this->activities->findAll();
+        $this->data['users']        = $this->users->findAll();
+        $this->data['title']        = 'ALL ENTRIES';
+
     }
 
 	/**
@@ -19,18 +35,6 @@ class LogtimeController extends BaseController {
 	 */
 	public function index()
 	{
-        $this->load->model("projects");
-        $this->load->model("teams");
-        $this->load->model("statuses");
-        $this->load->model("types");
-        $this->load->model("activities");
-
-        $this->data['projects']     = $this->projects->findAll();
-        $this->data['teams']        = $this->teams->findAll();
-        $this->data['statuses']     = $this->statuses->findAll();
-        $this->data['types']        = $this->types->findAll();
-        $this->data['activities']   = $this->activities->findAll();
-
         $this->processPegination();
 		$this->layout->view('logtime/index', $this->data);
 	}
@@ -45,21 +49,7 @@ class LogtimeController extends BaseController {
 	public function createLogtime()
 	{
         $this->layout->setLayout("layouts/ajax");
-
-        $this->load->library('form_validation');
-        $this->load->model("projects");
-        $this->load->model("teams");
-        $this->load->model("statuses");
-        $this->load->model("types");
-        $this->load->model("activities");
-
 		$this->form_validation->setRulesForCreateEntry();
-
-        $this->data['projects']     = $this->projects->findAll();
-        $this->data['teams']        = $this->teams->findAll();
-        $this->data['statuses']     = $this->statuses->findAll();
-        $this->data['types']        = $this->types->findAll();
-        $this->data['activities']   = $this->activities->findAll();
 
         if(!empty($_POST)) {
 
@@ -93,19 +83,8 @@ class LogtimeController extends BaseController {
 	public function edit($id)
 	{
         $this->load->library('form_validation');
-        $this->load->model("projects");
-        $this->load->model("teams");
-        $this->load->model("statuses");
-        $this->load->model("types");
-        $this->load->model("activities");
-
 		$this->form_validation->setRulesForCreateEntry();
 
-        $this->data['projects']     = $this->projects->findAll();
-        $this->data['teams']        = $this->teams->findAll();
-        $this->data['statuses']     = $this->statuses->findAll();
-        $this->data['types']        = $this->types->findAll();
-        $this->data['activities']   = $this->activities->findAll();
 
         if (!empty ($_POST)) {
 
@@ -138,7 +117,33 @@ class LogtimeController extends BaseController {
 	 */
 	public function filter()
 	{
-		$this->layout->view('welcome_message');
+        $params = array();
+        foreach($_POST as $key => $value)
+        {
+           if(!empty($value)) {
+               if ($key == 'date') $value = DateHelper::humanToMysql($value);
+               $params[$key] = $value;
+           }
+        }
+
+        $this->data['title']    = "Filters";
+        $this->data['filter']   = $params;
+        $this->data['logtimes'] = $this->logtimes->getAll($params);
+
+        $this->session->set_userdata('filter', $params);
+		$this->layout->view('logtime/index', $this->data);
+	}
+
+    	/**
+	 * Listing all logged Time
+	 *
+	 *
+	 * return string
+	 */
+	public function clearFilter()
+	{
+      $this->layout->view('welcome_message');
+      $this->_redirectForSuccess('logtime', "All filter's parameters has been cleared.");
 	}
 
     /**
@@ -149,7 +154,7 @@ class LogtimeController extends BaseController {
 	 */
 	public function export()
 	{
-		$this->layout->view('welcome_message');
+
 	}
 
 
@@ -157,8 +162,11 @@ class LogtimeController extends BaseController {
 	public function user()
 	{
 		$userId = $this->_ensureLoggedIn();
-		$this->logtimes->getWeeklyData($userId);
-		$this->layout->view('logtime/index');
+
+        $this->data['title']    = "Dashboard (Weekly View)";
+		$this->data['logtimes'] = $this->logtimes->getWeeklyData($userId);
+
+		$this->layout->view('logtime/index', $this->data);
 	}
 
 

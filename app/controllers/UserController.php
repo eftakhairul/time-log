@@ -26,7 +26,7 @@ class UserController extends BaseController
 					$this->session->set_userdata('user_id', $result->id);
 					$this->session->set_userdata('type_id', $result->type);
 
-					$this->_redirectForSuccess('logtime', 'You have successfully logged in.');
+					$this->_redirectForSuccess('logtime/user', 'You have successfully logged in.');
 
 				} else {
 					$this->data['error'] = 'Enter correct Username & Password.';
