@@ -139,17 +139,15 @@
                 <td class="action">
                     <a href="<?php echo site_url("logtime/edit/{$logtime->id}") ?>">Edit</a>
                     | <a href="<?php echo site_url("logtime/delete/id/{$logtime->id}") ?>" id='delete'>Delete</a>
-
                 </td>
             </tr>
+
             <?php endforeach; endif;
                 $total_mins += ($total_hours * 60);
                 $total_mins  = $total_mins /60;
                 $total_hours = floor($total_mins);
                 $total_mins  = $total_mins - $total_hours;
             ?>
-
-
              <tr>
                 <td class="centered" colspan="3"></td>
                 <td class="centered" ><p style="font-weight: bold;">Total</p></td>
