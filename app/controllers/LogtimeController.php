@@ -9,6 +9,7 @@ class LogtimeController extends BaseController {
 
         $this->load->model('logtimes');
 		$this->load->library('pagination');
+        $this->load->library('form_validation');
 
         $this->load->model("projects");
         $this->load->model("teams");
@@ -82,7 +83,6 @@ class LogtimeController extends BaseController {
 	 */
 	public function edit($id)
 	{
-        $this->load->library('form_validation');
 		$this->form_validation->setRulesForCreateEntry();
 
 
