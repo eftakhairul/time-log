@@ -3,9 +3,8 @@
 /**
  * DateHelper
  *
- * @author eftakhairul
+ * @author Eftakhairul Islam <eftakhairul@gmail.com>
  */
-
 class DateHelper
 {
     public static function mysqlToHuman ($date)

@@ -3,7 +3,7 @@
 /**
  * DbHelper
  *
- * @author Eftakhairul
+ * @author Eftakhairul Islam <eftakhairul@gmail.com>
  */
 
 class DbHelper

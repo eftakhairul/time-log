@@ -104,6 +104,8 @@
 
             </form>
         </div>
+        <br/>
+        <hr/>
 
         <table cellpadding="0" cellspacing="0" width="100%">
             <thead>
